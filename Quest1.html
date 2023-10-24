@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<h1> Matéria </h1>
+<font size="9" id="retorno"></font>
+
+<body>
+
+    <script>
+
+
+        let reset = Number(prompt("Quer cadastrar uma matéria?, digite 1, se não digite 0"));
+        while (reset < 0 || isNaN(reset) || reset > 2) {
+                alert("Digite apenas números")
+                reset = Number(prompt("Digite 0 para finalizar o programa, e 1 para escrever mais uma matéria e 0 para finalizar o programa"))
+            }
+
+        while (reset == 1) {
+            let mat = prompt("Digite o nome da matéria");
+            let desc = prompt("Escreva uma descrição desta matéria");
+            let freq = Number(prompt("Digite o número de frequencia necessária para ser aprovado nessa matéria"));
+            let nota = Number(prompt("Digite o número de nota necessária para ser aprovado nessa matéria"));
+            reset = Number(prompt("Digite 0 para finalizar o programa, e 1 para escrever mais uma matéria e 0 para finalizar o programa"));
+            while (reset < 0 || isNaN(reset) || reset > 2) {
+                alert("Digite apenas números")
+                reset = Number(prompt("Digite 0 para finalizar o programa, e 1 para escrever mais uma matéria e 0 para finalizar o programa"))
+            }
+            document.getElementById("retorno").innerHTML += "</br></br><hr>Matéria: " + mat + " </br> Descrição: " + desc + " </br> Frequência necessária para aprovação: " + freq + " </br> Nota necessária para aprovação: " + nota ;
+        }
+
+    </script>
+
+</body>
+
+</html>
