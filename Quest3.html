@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> Cadastro de Peças </h1>
+    <font id="retorno2"></font> <br><br>
+    <font id="retorno1"></font>
+
+    <script>
+        let i1 = 0;
+        let i2 = 400;
+        let iAprov = 0;
+        let iReprov = 0;
+        let texto = '';
+
+        while (i1 < 401) {
+            let NumPec = prompt("Digite o código da peça \n\n Foram cadastradas " + i1 + " peças. \n Faltam " + i2);
+            let estado = Number(prompt("Digite 1 para Aprovado e 2 para Reprovado\n(1) Aprovado\n(2) Reprovado"));
+            while (estado < 0 || isNaN(estado) || estado > 2) {
+                alert("Digite apenas números")
+                estado = Number(prompt("Digite o código da peça \n\n Foram cadastradas " + i1 + " peças. \n Faltam " + i2))
+            }
+
+            if (estado === 1) {
+                iAprov++;
+                i1++;
+                i2--;
+                texto = "Aprovado"
+            } else if (estado === 2) {
+                iReprov++;
+                i1++;
+                i2--;
+                texto = "Reprovado"
+
+            }
+
+          
+            document.getElementById("retorno2").innerHTML = "Aprovados: " + iAprov + "<br> Reprovados: " + iReprov;
+            document.getElementById("retorno1").innerHTML += "</br><hr>Código da peça: " + NumPec + " </br>Estado da peça: " + texto;
+
+        }
+    </script>
+</body>
+
+</html>

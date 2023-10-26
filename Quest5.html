@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> imposto </h1>
+    <font id="retorno2"></font> <br><br>
+    <font id="retorno1"></font>
+
+    <script>
+
+        let reset = Number(prompt("Digite 1 para iniciar o programa e 0 para encerrar"));
+
+        while (reset == 1) {
+            let resultado = '';
+            let Nome = prompt("Digite o nome do contribuinte");
+            let cpf = prompt("Digite o CPF desse contribuinte");
+            let renda = Number(prompt("Escreva a renda anual deste contribuinte"));
+
+            let depen = Number(prompt("Digite o número de dependentes"));
+            let descont = 110 * depen;
+            let rendLiquid = '';
+
+            if (renda < descont) {
+                rendLiquid = descont - renda
+            } else {
+                rendLiquid = renda - descont
+            }
+
+
+            switch (true) {
+                case rendLiquid <= 900:
+                    resultado = "Você está isento do imposto"
+                    break;
+                case rendLiquid > 900:
+                    resultado = rendLiquid * (5 / 100) + " reais de imposto a ser pago"
+                    break;
+                case rendLiquid > 5000:
+                    resultado = rendLiquid * (10 / 100) + " reais de imposto a ser pago"
+                    break;
+                case rendLiquid > 10000:
+                    resultado = rendLiquid * (15 / 100) + " reais de imposto a ser pago"
+                    break;
+                default:
+                    break;
+            }
+
+            reset = Number(prompt("Digite 1 para cadastrar um novo contribuinte e 0 para finalizar o programa"));
+
+            document.getElementById("retorno2").innerHTML += "</br></br><hr>" + resultado + "</br>Nome do contribuinte: " + Nome + "</br> CPF do contribuinte: " + cpf + "</br> Renda anual: " + renda + "</br> Número de dependentes: " + depen;
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

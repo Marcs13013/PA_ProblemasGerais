@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> Matriculas de Alunos </h1>
+    <font id="retorno2"></font> <br><br>
+    <font id="retorno1"></font>
+
+    <script>
+
+        let i1 = 0
+        let i2 = 70
+
+        while (i1 < 71) {
+
+            let prov1 = Number(prompt("Digite a primeira nota deste aluno\n " + i1 + " alunos foram cadastrados, faltam " + i2));
+            while (prov1 < 0 || isNaN(prov1) || prov1 > 10) {
+                alert("Digite apenas números")
+                 prov1 = Number(prompt("Digite a primeira nota deste aluno\n " + i1 + " alunos foram cadastrados, faltam " + i2));
+            }
+            let prov2 = Number(prompt("Digite a segunda nota deste aluno"));
+            while (prov2 < 0 || isNaN(prov2) || prov2 > 10) {
+                alert("Digite apenas números")
+                 prov2 = Number(prompt("Digite a segunda nota deste aluno"));
+            }
+            let prov3 = Number(prompt("Digite a terceira nota deste aluno"));
+            while (prov3 < 0 || isNaN(prov3) || prov3 > 10) {
+                alert("Digite apenas números")
+                 prov2 = Number(prompt("Digite a segunda nota deste aluno"));
+            }
+            
+            let frequencia = Number(prompt("Digite a frequência deste aluno"));
+            let media = (prov1 + prov2 + prov3) / 3;
+            let resultado = "";
+            if (media >= 7 && frequencia > 25) {
+                resultado = "Aprovado";
+                i1++
+                i2--
+            } else {
+                resultado = "Reprovado";
+                i1++
+                i2--
+            }
+
+            document.getElementById("retorno2").innerHTML += "</br><hr></br>" + "</br>Frequência: " + frequencia + " </br>Média: " + media + " </br>Situação: " + resultado;
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
