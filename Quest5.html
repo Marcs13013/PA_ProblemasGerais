@@ -8,52 +8,71 @@
 </head>
 
 <body>
-    <h1> imposto </h1>
+    <h1> Vaga de Emprego </h1>
     <font id="retorno2"></font> <br><br>
     <font id="retorno1"></font>
+
 
     <script>
 
         let reset = Number(prompt("Digite 1 para iniciar o programa e 0 para encerrar"));
 
         while (reset == 1) {
-            let resultado = '';
-            let Nome = prompt("Digite o nome do contribuinte");
-            let cpf = prompt("Digite o CPF desse contribuinte");
-            let renda = Number(prompt("Escreva a renda anual deste contribuinte"));
-
-            let depen = Number(prompt("Digite o número de dependentes"));
-            let descont = 110 * depen;
-            let rendLiquid = '';
-
-            if (renda < descont) {
-                rendLiquid = descont - renda
-            } else {
-                rendLiquid = renda - descont
+            let imatricula = 0;
+            let i = 0;
+            let imasc = 0;
+            let ifemin = 0;
+            let media = '';
+            let num = prompt("Digite o número do candidato");
+            let idade = Number(prompt("Digite a idade do candidato"));
+            while (idade < 0 || isNaN(idade) || idade > 100) {
+                alert("Digite apenas números, entre 1 a 100")
+                idade = Number(prompt("Digite a idade do candidato"));
             }
 
+            let sexo = Number(prompt("Digite (1) para Masculino\n e (2) para Feminino"));
+            while (sexo < 1 || isNaN(sexo) || sexo > 2) {
+                alert("Digite apenas números")
+                sexo = Number(prompt("Digite (1) para Masculino\n e (2) para Feminino"));
+            }
+            let exp = Number(prompt("Digite (1) para dizer se o candidato NÃO tem experiência\n e (2) para dizer se o candidato tem SIM experiência"));
 
-            switch (true) {
-                case rendLiquid <= 900:
-                    resultado = "Você está isento do imposto"
-                    break;
-                case rendLiquid > 900:
-                    resultado = rendLiquid * (5 / 100) + " reais de imposto a ser pago"
-                    break;
-                case rendLiquid > 5000:
-                    resultado = rendLiquid * (10 / 100) + " reais de imposto a ser pago"
-                    break;
-                case rendLiquid > 10000:
-                    resultado = rendLiquid * (15 / 100) + " reais de imposto a ser pago"
-                    break;
-                default:
-                    break;
+            while (exp < 1 || isNaN(exp) || exp > 2) {
+                alert("Digite apenas números")
+                exp = Number(prompt("Digite (1) para dizer se o candidato NÃO tem experiência\n e (2) para dizer se o candidato tem SIM experiência"));
             }
 
-            reset = Number(prompt("Digite 1 para cadastrar um novo contribuinte e 0 para finalizar o programa"));
+            if (sexo == 1) {
+                imasc++
+                imatricula++
 
-            document.getElementById("retorno2").innerHTML += "</br></br><hr>" + resultado + "</br>Nome do contribuinte: " + Nome + "</br> CPF do contribuinte: " + cpf + "</br> Renda anual: " + renda + "</br> Número de dependentes: " + depen;
+            } if(sexo == 2) {
+                ifemin++
+                imatricula++
+            }
+
+            if (idade >= 18 && exp == 2) {
+                i++
+            }
+
+            reset = Number(prompt("Digite 1 para cadastrar um novo candidato ou 0 para finalizar o programa"));
+
+
+            document.getElementById("retorno1").innerHTML = "O número total de candidatos homens é: " + imasc + " </br>O número total de candidatas mulheres " + ifemin + " </br>O número total de homens e mulheres que tem experiência de serviço são: " + ioficial;
         }
+
+        let idade2 = idade + idade;
+        media = idade2 / imatricula
+
+        document.getElementById("retorno2"), innerHTML = "A média das idades dos alunos é: " + media
+
+        //         5. Uma empresa decidiu fazer um recrutamento para preencher algumas vagas. Os
+        //  candidatos serão cadastrados por computador. Faça um algoritmo para:
+
+        //  a) ler o número do candidato, a idade, o sexo, a experiência profissional (Sim/Não);
+        //  b) mostrar a idade média dos candidatos;
+        //  c) mostrar o número total de candidatos e candidatas;
+        // d) mostrar os candidatos (homens e mulheres) maiores de idade que tenham  experiência no serviço
 
 
 
