@@ -4,80 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vaga de Emprego</title>
 </head>
 
 <body>
-    <h1> Vaga de Emprego </h1>
-    <font id="retorno2"></font> <br><br>
-    <font id="retorno1"></font>
-
+    <h1>Vaga de Emprego</h1>
+    <font id="retorno1"></font><br><br>
+    <font id="retorno2"></font>
 
     <script>
-
         let reset = Number(prompt("Digite 1 para iniciar o programa e 0 para encerrar"));
+        let imatricula = 0;
+        let imasc = 0;
+        let ifemin = 0;
+        let i = 0;
 
-        while (reset == 1) {
-            let imatricula = 0;
-            let i = 0;
-            let imasc = 0;
-            let ifemin = 0;
-            let media = '';
+        while (reset === 1) {
             let num = prompt("Digite o número do candidato");
             let idade = Number(prompt("Digite a idade do candidato"));
-            while (idade < 0 || isNaN(idade) || idade > 100) {
-                alert("Digite apenas números, entre 1 a 100")
+
+            while (isNaN(idade) || idade <= 0 || idade > 100) {
+                alert("Digite apenas números, entre 1 a 100");
                 idade = Number(prompt("Digite a idade do candidato"));
             }
 
-            let sexo = Number(prompt("Digite (1) para Masculino\n e (2) para Feminino"));
-            while (sexo < 1 || isNaN(sexo) || sexo > 2) {
-                alert("Digite apenas números")
-                sexo = Number(prompt("Digite (1) para Masculino\n e (2) para Feminino"));
-            }
-            let exp = Number(prompt("Digite (1) para dizer se o candidato NÃO tem experiência\n e (2) para dizer se o candidato tem SIM experiência"));
-
-            while (exp < 1 || isNaN(exp) || exp > 2) {
-                alert("Digite apenas números")
-                exp = Number(prompt("Digite (1) para dizer se o candidato NÃO tem experiência\n e (2) para dizer se o candidato tem SIM experiência"));
+            let sexo = Number(prompt("Digite (1) para Masculino e (2) para Feminino"));
+            while (isNaN(sexo) || (sexo !== 1 && sexo !== 2)) {
+                alert("Digite apenas 1 para Masculino e 2 para Feminino");
+                sexo = Number(prompt("Digite (1) para Masculino e (2) para Feminino"));
             }
 
-            if (sexo == 1) {
-                imasc++
-                imatricula++
-
-            } if(sexo == 2) {
-                ifemin++
-                imatricula++
+            let exp = Number(prompt("Digite (1) para NÃO ter experiência e (2) para TER experiência"));
+            while (isNaN(exp) || (exp !== 1 && exp !== 2)) {
+                alert("Digite apenas 1 para dizer quem NÃO TEM experiência e 2 para quem TEM experiência");
+                exp = Number(prompt("Digite (1) para NÃO ter experiência e (2) para TER experiência"));
             }
 
-            if (idade >= 18 && exp == 2) {
-                i++
+            if (sexo === 1) {
+                imasc++;
+            } else if (sexo === 2) {
+                ifemin++;
             }
+
+            if (idade >= 18 && exp === 2) {
+                i++;
+            }
+
+            imatricula++;
 
             reset = Number(prompt("Digite 1 para cadastrar um novo candidato ou 0 para finalizar o programa"));
-
-
-            document.getElementById("retorno1").innerHTML = "O número total de candidatos homens é: " + imasc + " </br>O número total de candidatas mulheres " + ifemin + " </br>O número total de homens e mulheres que tem experiência de serviço são: " + ioficial;
+            document.getElementById("retorno1").innerHTML = "O número total de candidatos homens é: " + imasc + "<br>O número total de candidatas mulheres " + ifemin + "<br>O número total de homens e mulheres que têm experiência de serviço são: " + i;
+            let idade2 = 0;
+            let media = 0;
+    
+            if (imatricula > 0) {
+                idade2 = idade;
+                media = idade2 / imatricula;
+            }
+    
+    
+            document.getElementById("retorno2").innerHTML = "A média das idades dos candidatos é: " + media;
         }
-
-        let idade2 = idade + idade;
-        media = idade2 / imatricula
-
-        document.getElementById("retorno2"), innerHTML = "A média das idades dos alunos é: " + media
-
-        //         5. Uma empresa decidiu fazer um recrutamento para preencher algumas vagas. Os
-        //  candidatos serão cadastrados por computador. Faça um algoritmo para:
-
-        //  a) ler o número do candidato, a idade, o sexo, a experiência profissional (Sim/Não);
-        //  b) mostrar a idade média dos candidatos;
-        //  c) mostrar o número total de candidatos e candidatas;
-        // d) mostrar os candidatos (homens e mulheres) maiores de idade que tenham  experiência no serviço
-
-
-
+        
     </script>
-
 </body>
 
 </html>
